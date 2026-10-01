@@ -1,42 +1,14 @@
 from flask import render_template, url_for, flash, redirect, request
-from datetime import datetime
 from .forms import LoginForm, RegistrationForm
 from .application import app, db, bcrypt
 from .models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
 
-blog_posts = [
-    {
-        "author": "Jan doe",
-        "title": "Post1",
-        "content": "First post in blog",
-        "date_posted": datetime.now(),
-    },
-    {
-        "author": "",
-        "title": "Post2",
-        "content": "Second post in blog",
-        "date_posted": datetime.now(),
-    },
-    {
-        "author": "",
-        "title": "Post3",
-        "content": "Third post in blog",
-        "date_posted": datetime.now(),
-    },
-    {
-        "author": "",
-        "title": "Post4",
-        "content": "4th post in blog",
-        "date_posted": datetime.now(),
-    },
-]
-
 
 @app.route("/")
 def home():
-    posts = blog_posts
+    posts = Post.query.order_by(Post.date_posted.desc()).all()
     return render_template("home.html", posts=posts)
 
 

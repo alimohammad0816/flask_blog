@@ -56,10 +56,11 @@ weblog/
 
 ## Status & roadmap
 
-The home page currently renders sample posts. Planned next steps:
+The home page renders posts from the database. Planned next steps:
 
 - [ ] Create, edit and delete posts from the UI
-- [ ] Render posts from the database with pagination
+- [x] Render posts from the database
+- [ ] Pagination
 - [ ] Profile image upload
 
 ## License
