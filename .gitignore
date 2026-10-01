@@ -1,2 +1,4 @@
 weblog/__pycache__/
 weblog/site.db
+.venv/
+*.pyc

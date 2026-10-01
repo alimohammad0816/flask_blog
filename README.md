@@ -35,6 +35,7 @@ with app.app_context():
     db.create_all()
 EOF
 
+export SECRET_KEY='change-me'   # optional for local dev
 python app.py
 ```
 
@@ -59,7 +60,6 @@ The home page currently renders sample posts. Planned next steps:
 
 - [ ] Create, edit and delete posts from the UI
 - [ ] Render posts from the database with pagination
-- [ ] Load `SECRET_KEY` from environment variables
 - [ ] Profile image upload
 
 ## License
