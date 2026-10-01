@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    {% for post in posts %}
+    {% for post in posts.items %}
         <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
@@ -14,4 +14,19 @@
     {% else %}
         <p class="text-muted">No posts yet.</p>
     {% endfor %}
+    {% if posts.pages > 1 %}
+        <nav aria-label="Posts pages">
+          <ul class="pagination">
+            {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+              {% if page_num %}
+                <li class="page-item {% if page_num == posts.page %}active{% endif %}">
+                  <a class="page-link" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled"><span class="page-link">&hellip;</span></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </nav>
+    {% endif %}
 {% endblock content %}
