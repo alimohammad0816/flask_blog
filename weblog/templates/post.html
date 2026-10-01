@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <span class="mr-2">{{ post.author.username }}</span>
+          <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+          {% if post.author == current_user %}
+            <div class="mt-2">
+              <a class="btn btn-secondary btn-sm" href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
+              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
+            </div>
+          {% endif %}
+        </div>
+        <h2 class="article-title">{{ post.title }}</h2>
+        <p class="article-content">{{ post.content }}</p>
+      </div>
+    </article>
+
+    {% if post.author == current_user %}
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Delete post?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
+              {{ delete_form.hidden_tag() }}
+              {{ delete_form.submit(class="btn btn-danger") }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+{% endblock content %}

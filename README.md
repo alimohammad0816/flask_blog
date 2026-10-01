@@ -8,7 +8,7 @@ A blog application built with **Flask**, with user registration, secure password
 - **Secure passwords**: hashed with `bcrypt` via Flask-Bcrypt.
 - **Sessions**: Flask-Login handles "remember me", protected routes (`@login_required`) and safe `next` redirects.
 - **ORM models**: `User` and `Post` (one-to-many) defined with Flask-SQLAlchemy on SQLite.
-- **Pages**: home feed, about, register, login and a protected account page.
+- **Pages**: paginated home feed, post detail, create/edit/delete post (author only), about, register, login and a protected account page.
 - **Templating**: Jinja2 layouts with a shared base template and flash messages.
 
 ## Tech stack
@@ -58,7 +58,7 @@ weblog/
 
 The home page renders posts from the database. Planned next steps:
 
-- [ ] Create, edit and delete posts from the UI
+- [x] Create, edit and delete posts from the UI
 - [x] Render posts from the database
 - [x] Pagination (5 posts per page)
 - [ ] Profile image upload
