@@ -60,7 +60,7 @@ The home page renders posts from the database. Planned next steps:
 
 - [ ] Create, edit and delete posts from the UI
 - [x] Render posts from the database
-- [ ] Pagination
+- [x] Pagination (5 posts per page)
 - [ ] Profile image upload
 
 ## License
